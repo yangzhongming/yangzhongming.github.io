@@ -107,20 +107,20 @@
 
 
 
-<meta name="description" content="webpack介绍webpack：是一个前端资源的打包工具，它可以将js、image、css等资源当成一个模块进行打包。webpack的优点：  模块化开发 编译typescript、ES6等高级语法 CSS预编译  webpack的缺点：  配置繁琐，文档不丰富  webpack的安装 安装node.js  下载地址：https://nodejs.org/en/download/ 安装成功后，在">
+<meta name="description" content="webpack介绍webpack：是一个前端资源的打包工具，它可以将js、image、css等资源当成一个模块进行打包。 ###webpack的优点：  模块化开发 编译typescript、ES6等高级语法 CSS预编译  ###webpack的缺点：  配置繁琐，文档不丰富  webpack的安装 安装node.js  下载地址：https://nodejs.org/en/download/">
 <meta name="keywords" content="前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack基础入门">
 <meta property="og:url" content="http://yoursite.com/2019/02/27/webPack_20190227/index.html">
 <meta property="og:site_name" content="码农搬运工">
-<meta property="og:description" content="webpack介绍webpack：是一个前端资源的打包工具，它可以将js、image、css等资源当成一个模块进行打包。webpack的优点：  模块化开发 编译typescript、ES6等高级语法 CSS预编译  webpack的缺点：  配置繁琐，文档不丰富  webpack的安装 安装node.js  下载地址：https://nodejs.org/en/download/ 安装成功后，在">
+<meta property="og:description" content="webpack介绍webpack：是一个前端资源的打包工具，它可以将js、image、css等资源当成一个模块进行打包。 ###webpack的优点：  模块化开发 编译typescript、ES6等高级语法 CSS预编译  ###webpack的缺点：  配置繁琐，文档不丰富  webpack的安装 安装node.js  下载地址：https://nodejs.org/en/download/">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ww1.yunjiexi.club/2019/03/18/D4r3M.png">
 <meta property="og:image" content="https://ww1.yunjiexi.club/2019/03/18/D43IU.png">
-<meta property="og:updated_time" content="2019-08-05T05:09:44.208Z">
+<meta property="og:updated_time" content="2019-08-05T06:36:43.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack基础入门">
-<meta name="twitter:description" content="webpack介绍webpack：是一个前端资源的打包工具，它可以将js、image、css等资源当成一个模块进行打包。webpack的优点：  模块化开发 编译typescript、ES6等高级语法 CSS预编译  webpack的缺点：  配置繁琐，文档不丰富  webpack的安装 安装node.js  下载地址：https://nodejs.org/en/download/ 安装成功后，在">
+<meta name="twitter:description" content="webpack介绍webpack：是一个前端资源的打包工具，它可以将js、image、css等资源当成一个模块进行打包。 ###webpack的优点：  模块化开发 编译typescript、ES6等高级语法 CSS预编译  ###webpack的缺点：  配置繁琐，文档不丰富  webpack的安装 安装node.js  下载地址：https://nodejs.org/en/download/">
 <meta name="twitter:image" content="https://ww1.yunjiexi.club/2019/03/18/D4r3M.png">
 
 
@@ -470,13 +470,14 @@
       
 
       
-        <h2 id="webpack介绍"><a href="#webpack介绍" class="headerlink" title="webpack介绍"></a>webpack介绍</h2><p>webpack：是一个前端资源的打包工具，它可以将js、image、css等资源当成一个模块进行打包。<br>webpack的优点：</p>
+        <h2 id="webpack介绍"><a href="#webpack介绍" class="headerlink" title="webpack介绍"></a>webpack介绍</h2><p>webpack：是一个前端资源的打包工具，它可以将js、image、css等资源当成一个模块进行打包。</p>
+<p>###webpack的优点：</p>
 <ul>
 <li>模块化开发</li>
 <li>编译typescript、ES6等高级语法</li>
 <li>CSS预编译</li>
 </ul>
-<p>webpack的缺点：</p>
+<p>###webpack的缺点：</p>
 <ul>
 <li>配置繁琐，文档不丰富</li>
 </ul>
@@ -491,8 +492,8 @@
 <ul>
 <li><p>查看配置信息：</p>
 <pre><code>npm config ls
-运行结果：
-metrics-registry = &quot;https://registry.npmjs.org/&quot;
+</code></pre><p>运行结果：</p>
+<pre><code>metrics-registry = &quot;https://registry.npmjs.org/&quot;
 scope = &quot;&quot;
 user-agent = &quot;npm/6.4.1 node/v10.14.2 win32 x64&quot;
 
@@ -545,15 +546,20 @@ prefix=D:\Program Files\nodejs\npm_modules
 win32 x64 6.1.7601
 registry=https://registry.npm.taobao.org
 </code></pre></li>
-<li>安装nrm</li>
-<li>安装webpack<br>webpack安装分为本地安装和全局安装，本地安装是将webpack安装在当前项目的node_modules目录中，仅对当前项目有效。全局安装类似系统安装，对所有项目有效。<ul>
-<li>本地安装：<pre><code>cd 工程目录
+<li><p>安装nrm</p>
+</li>
+<li><p>安装webpack<br>webpack安装分为本地安装和全局安装，本地安装是将webpack安装在当前项目的node_modules目录中，仅对当前项目有效。全局安装类似系统安装，对所有项目有效。</p>
+<ul>
+<li><p>本地安装：</p>
+<pre><code>cd 工程目录
 npm install --save webpack
 npm install --save-dev webpack-cli（(4.0以后的版本需要安装webpack-cli）
 </code></pre></li>
-<li>全局安装<br>webpack的js包下载到npm的包路径下<pre><code>npm install webpack -g
+<li><p>全局安装<br>webpack的js包下载到npm的包路径下</p>
+<pre><code>npm install webpack -g
 </code></pre></li>
-<li>指定版本安装<pre><code>cnpm install --save-dev webpack@3.6.0
+<li><p>指定版本安装</p>
+<pre><code>cnpm install --save-dev webpack@3.6.0
 </code></pre></li>
 </ul>
 </li>
@@ -600,7 +606,7 @@ npm install --save-dev webpack-cli（(4.0以后的版本需要安装webpack-cli�
 var add = function (x,y){
   return  x + y;
 }
-//导出方法
+//导出方法,module固定关键字
 module.exports.add = add;
 
 //多个方法导出参考如下写法：
@@ -611,18 +617,18 @@ module.exports  = {add1,add2};
 var Vue = require(&quot;./vue.min.js&quot;);
 
 var VM = new Vue({
-  el:&apos;#app&apos;,
-  data:{
-      name:&apos;yzhm&apos;,
-      num1:0,
-      num2:1,
-      url:&apos;http://www.baidu.com&apos;,
-  },
-  methods:{
-      change:function() {
-          this.result = add(Number.parseInt(this.num1),Number.parseInt(this.num2))
-      }
-  }
+    el:&apos;#app&apos;,
+    data:{
+    name:&apos;yzhm&apos;,
+    num1:0,
+    num2:1,
+    url:&apos;http://www.baidu.com&apos;,
+},
+methods:{
+    change:function() {
+    this.result = add(Number.parseInt(this.num1),Number.parseInt(this.num2))
+    }
+    }
 });
 </code></pre></li>
 <li><p>webpack打包：</p>
@@ -637,22 +643,24 @@ webpack main.js build.js
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot; xmlns:v-bind=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
 &lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;title&gt;vue.js 入门程序&lt;/title&gt;
-  &lt;script src=&quot;./js/build.js&quot;&gt;
-  &lt;/script&gt;
-&lt;/head&gt;
+   &lt;meta charset=&quot;UTF-8&quot;&gt;
+   &lt;title&gt;vue.js 入门程序&lt;/title&gt;
+   &lt;script src=&quot;./js/build.js&quot;&gt;
+   &lt;/script&gt;
+  &lt;/head&gt;
 &lt;body&gt;
-  &lt;div id=&quot;app&quot;&gt;
-      &lt;a v-bind:href=&quot;url&quot;&gt;&lt;span v-text=&quot;name&quot;&gt;&lt;/span&gt;&lt;/a&gt;
-      &lt;input type=&quot;text&quot; v-model=&quot;num1&quot;&gt; +
-      &lt;input type=&quot;text&quot; v-model=&quot;num2&quot;&gt; =
-      &lt;span v-text=&quot;result&quot;&gt;&lt;/span&gt;
-      &lt;button v-on:click=&quot;change&quot;&gt;计算&lt;/button&gt;
-  &lt;/div&gt;
+&lt;div id=&quot;app&quot;&gt;
+&lt;a v-bind:href=&quot;url&quot;&gt;&lt;span v-text=&quot;name&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+&lt;input type=&quot;text&quot; v-model=&quot;num1&quot;&gt; +
+&lt;input type=&quot;text&quot; v-model=&quot;num2&quot;&gt; =
+&lt;span v-text=&quot;result&quot;&gt;&lt;/span&gt;
+&lt;button v-on:click=&quot;change&quot;&gt;计算&lt;/button&gt;
+&lt;/div&gt;
 &lt;/body&gt;
-
 &lt;/html&gt;
+
+--注：主画面中引用的如下代码，应放在&lt;/body&gt;&lt;/html&gt;之间，否则可能会出现引用无效的情况。
+&lt;script src=&quot;./js/build.js&quot;&gt;
 </code></pre></li>
 </ul>
 
