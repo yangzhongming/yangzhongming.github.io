@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -117,7 +117,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ww1.yunjiexi.club/2019/03/18/D4r3M.png">
 <meta property="og:image" content="https://ww1.yunjiexi.club/2019/03/18/D43IU.png">
-<meta property="og:updated_time" content="2019-08-05T06:36:43.057Z">
+<meta property="og:updated_time" content="2019-08-06T09:01:09.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack基础入门">
 <meta name="twitter:description" content="webpack介绍webpack：是一个前端资源的打包工具，它可以将js、image、css等资源当成一个模块进行打包。 ###webpack的优点：  模块化开发 编译typescript、ES6等高级语法 CSS预编译  ###webpack的缺点：  配置繁琐，文档不丰富  webpack的安装 安装node.js  下载地址：https://nodejs.org/en/download/">
@@ -433,7 +433,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.2k 字
+                  2.1k 字
                 </span>
               
 
@@ -449,7 +449,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6 分钟
+                  10 分钟
                 </span>
               
             </div>
@@ -561,6 +561,13 @@ npm install --save-dev webpack-cli（(4.0以后的版本需要安装webpack-cli�
 <li><p>指定版本安装</p>
 <pre><code>cnpm install --save-dev webpack@3.6.0
 </code></pre></li>
+<li><p>安装执行以下命令，确认是否安装成功</p>
+<pre><code>webpack
+</code></pre><p>出现以下信息证明安装成功：</p>
+<pre><code>No configuration file found and no output filename configured via CLI option.
+A configuration file could be named &apos;webpack.config.js&apos; in the current directory.
+Use --help to display the CLI options.
+</code></pre></li>
 </ul>
 </li>
 </ul>
@@ -662,6 +669,100 @@ webpack main.js build.js
 --注：主画面中引用的如下代码，应放在&lt;/body&gt;&lt;/html&gt;之间，否则可能会出现引用无效的情况。
 &lt;script src=&quot;./js/build.js&quot;&gt;
 </code></pre></li>
+</ul>
+<h2 id="webpack-dev-server介绍"><a href="#webpack-dev-server介绍" class="headerlink" title="webpack-dev-server介绍"></a>webpack-dev-server介绍</h2><p>webpack-dev-server开发服务器，它的功能可以实现热加载 并且自动刷新浏览器。</p>
+<h3 id="webpack的安装-1"><a href="#webpack的安装-1" class="headerlink" title="webpack的安装"></a>webpack的安装</h3><pre><code>npm install webpack@3.6.0 webpack-dev-server@2.9.1 html-webpack-plugin@2.30.1 --save-dev
+</code></pre><p>安装完成，会发现程序目录出现一个package.json文件，此文件中记录了程序的依赖。</p>
+<pre><code>{
+&quot;scripts&quot;: {
+&quot;dev&quot;: &quot;webpack-dev-server --inline --hot --open --port 5008&quot;
+},
+&quot;devDependencies&quot;: {
+&quot;html-webpack-plugin&quot;: &quot;^2.30.1&quot;,
+&quot;webpack&quot;: &quot;^3.6.0&quot;,
+&quot;webpack-dev-server&quot;: &quot;^2.9.1&quot;
+}
+}
+</code></pre><p>参数说明：</p>
+<pre><code>--inline：自动刷新
+--hot：热加载
+--port：指定端口
+--open：自动在默认浏览器打开
+--host：可以指定服务器的 ip，不指定则为127.0.0.1，如果对外发布则填写公网ip地址
+devDependencies：开发人员在开发过程中所需要的依赖。
+scripts：可执行的命令
+</code></pre><p>###配置webpack.config.js<br> webpack.config.js是webpack的配置文件。在此文件中可以配置应用的入口文件、输出配置、插件等，其中要实现热加载自动刷新功能需要配置html-webpack-plugin插件。</p>
+<p> html-webpack-plugin的作用是根据html模板在内存生成html文件，它的工作原理是根据模板文件在内存中生成一个index.html文件</p>
+<ul>
+<li><p>配置模板文件：</p>
+<pre><code> &lt;!DOCTYPE html&gt;
+ &lt;html lang=&quot;en&quot;&gt;
+ &lt;head&gt;
+ &lt;meta charset=&quot;UTF-8&quot;&gt;
+ &lt;title&gt;vue.js常用指令的测试&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+ &lt;!--实现在body区域显示一个传智播客名称--&gt;
+ &lt;div id=&quot;app&quot;&gt;
+ &lt;!--相当于MVVM的view视图--&gt;
+ &lt;!--{{name}}--&gt;
+ &lt;a v-bind:href=&quot;url&quot;&gt;
+ &lt;span v-text=&quot;name&quot;&gt;&lt;/span&gt;
+ &lt;/a&gt;
+ &lt;input type=&quot;text&quot; v-model=&quot;num1&quot;/&gt; +
+ &lt;input type=&quot;text&quot; v-model=&quot;num2&quot;/&gt;=
+ &lt;!-- &lt;span v-text=&quot;Number.parseInt(num1)+Number.parseInt(num2)&quot;&gt;&lt;/span&gt;--&gt;
+ &lt;span v-text=&quot;result&quot;&gt;&lt;/span&gt;
+ &lt;!--{{Number.parseInt(num1)+Number.parseInt(num2)}}--&gt;
+ &lt;button v-on:click=&quot;change&quot;&gt;计算&lt;/button&gt;
+ &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+以上代码已去掉引入的script标签，即引入的build.js
+</code></pre></li>
+</ul>
+<ul>
+<li><p>配置 html-webpack-plugin,在webpack.config.js中配置html-webpack-plugin插件：</p>
+<pre><code>//引用html-webpack-plugin插件，作用是根据html模板在内存生成html文件，它的工作原理是根据模板文件在内存中生成一个index.html文件。
+var htmlwp = require(&apos;html-webpack-plugin&apos;);
+module.exports={
+entry:&apos;./src/main.js&apos;,  //指定打包的入口文件
+output:{
+    path : __dirname+&apos;/dist&apos;,  // 注意：__dirname表示webpack.config.js所在目录的绝对路径
+    filename:&apos;build.js&apos;           //输出文件
+},
+devtool: &apos;eval-source-map&apos;,
+plugins:[
+    new htmlwp({
+        title: &apos;首页&apos;,  //生成的页面标题&lt;head&gt;&lt;title&gt;首页&lt;/title&gt;&lt;/head&gt;
+        filename: &apos;index.html&apos;, //webpack-dev-server在内存中生成的文件名称，自动将build注入到这个页面底部，才能实现自动刷新功能
+        template: &apos;vue_02.html&apos; //根据vue_02.html这个模板来生成(这个文件请程序员自己生成)
+    })
+]
+</code></pre><p>  }</p>
+</li>
+</ul>
+<ul>
+<li><p>启动</p>
+<ul>
+<li>使用webstorm，右键package.json文件，选择“Show npm Scripts”</li>
+<li>双击dev,自动打开浏览器</li>
+</ul>
+</li>
+<li><p>debug调试</p>
+<ul>
+<li><p>在webpack.config.js中配置，参照上述完整配置：  </p>
+<pre><code>devtool: &apos;eval-source-map&apos;
+</code></pre></li>
+<li><p>在add方法中添加debugger，例如：</p>
+<pre><code>// 定义add函数
+function add(x, y) {
+debugger
+return x + y }
+</code></pre></li>
+</ul>
+</li>
 </ul>
 
       
@@ -858,7 +959,7 @@ webpack main.js build.js
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack介绍"><span class="nav-number">1.</span> <span class="nav-text">webpack介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack的安装"><span class="nav-number">2.</span> <span class="nav-text">webpack的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack的打包"><span class="nav-number">3.</span> <span class="nav-text">webpack的打包</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack介绍"><span class="nav-number">1.</span> <span class="nav-text">webpack介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack的安装"><span class="nav-number">2.</span> <span class="nav-text">webpack的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack的打包"><span class="nav-number">3.</span> <span class="nav-text">webpack的打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack-dev-server介绍"><span class="nav-number">4.</span> <span class="nav-text">webpack-dev-server介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack的安装-1"><span class="nav-number">4.1.</span> <span class="nav-text">webpack的安装</span></a></li></ol></li></ol></div>
             
 
           </div>
